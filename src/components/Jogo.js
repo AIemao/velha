@@ -76,9 +76,26 @@ class Jogo extends React.Component {
         return true
     }
 
-    verificarDiagonal(jogador, diagonal) {
-       
+    verificarDiagonal(jogador) {
+       return this.verificarDiagonal1(jogador) || this.verificarDiagonal2(jogador)
     }
+
+    verificarDiagonal1(jogador) {
+        for (let l=0, c=0; l < 3; l++, c++) {
+            if (this.state.dados[l][c] !== jogador) {
+                return false;
+            }
+        }
+     }
+
+     verificarDiagonal2(jogador) {
+        for (let l=0, c=2; l < 3; l++, c--) {
+            if (this.state.dados[l][c] !== jogador) {
+                return false;
+            }
+        }
+        return true
+     }
 
 
         render() {
